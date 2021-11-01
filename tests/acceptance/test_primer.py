@@ -37,7 +37,7 @@ def lazy_git_clone(git_url: str, target_directory: str) -> None:
 def test_primer(git_url, directories_to_lint):
     parts = git_url.split("/")  # ["https:", "github.com", "psf" "black.git"]
     namespace = parts[-2]  # "psf"
-    project = parts[-1][:-4]  # "black"
+    project = parts[-1][:-4]  # "black", :-4 removes ".git"
     target_directory = f"{PRIMER_DIRECTORY}/{namespace}/{project}"
     lazy_git_clone(git_url, target_directory)
     os.chdir(target_directory)
